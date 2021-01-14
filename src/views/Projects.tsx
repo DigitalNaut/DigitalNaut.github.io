@@ -19,13 +19,13 @@ const Projects: React.FC<ProjectsProps> = ({ innerRef }) => {
       <Title>Projects</Title>
       <div className="grid grid-flow-row grid-cols-2 gap-4 mt-8 mb-6 overflow-y-auto">
         <ProjectFrame image={ProjectImage} title="RSS Feeder" />
-        <a href={process.env.REACT_APP_PROJECT_LOKER} target="_blank">
+        <a href={process.env.REACT_APP_PROJECT_LOKER} target="_blank" rel="noreferrer">
           <ProjectFrame image={LokrProjectPreview} title="Loker" />
         </a>
-        <a href={process.env.REACT_APP_PROJECT_CALCAPP} target="_blank">
+        <a href={process.env.REACT_APP_PROJECT_CALCAPP} target="_blank" rel="noreferrer">
           <ProjectFrame image={CalcAppProjectPreview} title="Calc App" />
         </a>
-        <a href={process.env.REACT_APP_PROJECT_TCRH} target="_blank">
+        <a href={process.env.REACT_APP_PROJECT_TCRH} target="_blank" rel="noreferrer">
           <ProjectFrame image={TCRHProjectPreview} title="Thaumic Research Helper" />
         </a>
       </div>
