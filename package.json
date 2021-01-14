@@ -1,8 +1,8 @@
 {
+  "homepage": "https://digitalnaut.github.io/",
   "name": "portafoliowebsite",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://digitalnaut.github.io/PortafolioWebsite/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
