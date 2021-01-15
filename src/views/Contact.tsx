@@ -143,8 +143,8 @@ const ContactForm: React.FC = (props) => {
                 {errors.length > 0 && (
                   <div className="text-sm text-red-700">
                     <ul className="leading-4 list-disc">
-                      {errors.map((error) => (
-                        <li>{error}</li>
+                      {errors.map((error, i) => (
+                        <li key={i}>{error}</li>
                       ))}
                     </ul>
                   </div>
