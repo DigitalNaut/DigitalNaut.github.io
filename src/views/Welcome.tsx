@@ -15,7 +15,7 @@ const Welcome: React.FC<WelcomeProps> = ({ innerRef, scrollTarget }) => {
     <>
       <span ref={innerRef} />
       <Section color="accent" centered>
-        <div className="px-8 py-20 m-auto text-2xl bg-red-400 lg:px-72 md:px-24 sm:px-12 rounded-tr-2xl rounded-bl-2xl">
+        <div className="px-8 py-20 m-auto text-2xl bg-red-400 lg:px-36 md:px-24 sm:px-12 rounded-tr-2xl rounded-bl-2xl">
           <p className="mb-12 italic">
             Hello! I'm
             <br />
