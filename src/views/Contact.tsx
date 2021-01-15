@@ -92,6 +92,7 @@ const ContactForm: React.FC = (props) => {
           },
           (error) => {
             setServerError(error);
+            console.log(error)
           }
         );
     }
