@@ -3,7 +3,6 @@ import Section from "../components/Section";
 import Title from "../components/Formatting";
 import { ProjectFrame } from "../components/ImageFrames";
 
-import ProjectImage from "../assets/images/ProjectImage.png";
 import LokrProjectPreview from "../assets/images/LokrProjectPreview.png";
 import TCRHProjectPreview from "../assets/images/TCRHProjectPreview.png";
 import CalcAppProjectPreview from "../assets/images/CalcAppProjectPreview.png";
