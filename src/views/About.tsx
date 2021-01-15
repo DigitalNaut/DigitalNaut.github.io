@@ -1,7 +1,7 @@
 import React from "react";
 
 import Section from "../components/Section";
-import Title, { Paragraph, Subtitle } from "../components/Formatting";
+import { Title, Paragraph, Subtitle } from "../components/Formatting";
 import { ProfilePhoto, BookPreview } from "../components/ImageFrames";
 
 import bigote from "../assets/images/Bigote.png";
@@ -35,8 +35,11 @@ const About: React.FC<AboutProps> = ({ innerRef }) => {
         With formal training and passion for both the
         <Highlight> exact sciences</Highlight> & the
         <Highlight> graphic arts</Highlight>, I believe I can take on the world
-        of <Highlight>web animation, Machine Learning</Highlight> and many more
-        challenges ahead.
+        of{" "}
+        <Highlight>
+          software engineering, web animation, Machine Learning
+        </Highlight>{" "}
+        and many more challenges ahead.
       </Paragraph>
       <Tag>Detail-oriented</Tag>
       <Tag>Accountable</Tag>

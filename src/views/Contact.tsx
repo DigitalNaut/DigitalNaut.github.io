@@ -1,7 +1,7 @@
 import React from "react";
 import FancyButton from "../components/FancyButton";
 import Section from "../components/Section";
-import Title, { Paragraph } from "../components/Formatting";
+import { Title, Paragraph } from "../components/Formatting";
 import emailjs from "emailjs-com";
 import loadEmailJS from "../modules/emailjs";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
@@ -24,7 +24,7 @@ const Contact: React.FC<ContactProps> = ({ children, innerRef }) => {
       <Title>Contact</Title>
       <div className="my-6">
         <Paragraph centered untabbed>
-          Do you have a comment or a question? I’d love to hear from you!
+          Do you have a comment or a question? <br/> I’d love to hear from you!
         </Paragraph>
         {isLoading ? (
           <p className="m-12 mt-0 text-2xl">Loading forms...</p>
@@ -92,7 +92,7 @@ const ContactForm: React.FC = (props) => {
           },
           (error) => {
             setServerError(error);
-            console.log(error)
+            console.log(error);
           }
         );
     }
@@ -110,7 +110,7 @@ const ContactForm: React.FC = (props) => {
           </Paragraph>
         </div>
       ) : (
-        <form name="contactForm" className="flex flex-col">
+        <form name="contactForm" className="flex flex-col w-11/12 mx-auto md:w-5/6 sm:w-10/12">
           <LabeledInputField
             text={from_name}
             setText={setName}

@@ -181,7 +181,7 @@ module.exports = {
     },
     fontFamily: {
       body: ["Lato", "sans-serif"],
-      display: ["Lobster", "cursive"],
+      title: ["Lobster", "cursive"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],
@@ -695,6 +695,7 @@ module.exports = {
       "10/12": "83.333333%",
       "11/12": "91.666667%",
       full: "100%",
+      full2: "200%",
       screen: "100vw",
       min: "min-content",
       max: "max-content",

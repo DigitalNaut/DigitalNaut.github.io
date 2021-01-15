@@ -19,7 +19,7 @@ const Welcome: React.FC<WelcomeProps> = ({ innerRef, scrollTarget }) => {
           <p className="mb-12 italic">
             Hello! I'm
             <br />
-            <span className="text-5xl not-italic font-display">
+            <span className="text-5xl not-italic font-title">
               <span className="text-blue-900 text-shadow-md">John Bernal</span>,
             </span>
             <br />

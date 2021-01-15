@@ -2,7 +2,7 @@ import React from "react";
 
 import FancyButton from "../components/FancyButton";
 import Section from "../components/Section";
-import Title from "../components/Formatting";
+import { Title } from "../components/Formatting";
 import { ResumePreview } from "../components/ImageFrames";
 
 import ResumeImage from "../assets/images/EN_CV_FSD_1_5_2020.jpg";
@@ -17,7 +17,7 @@ const Resume: React.FC<ResumeProps> = ({ innerRef }) => {
     <Section color="alt">
       <span ref={innerRef} />
       <Title>Résumé</Title>
-      <div className="mt-8">
+      <div className="mx-auto mt-8">
         <ResumePreview image={ResumeImage} width="80%" />
         <FancyButton
           type="down"

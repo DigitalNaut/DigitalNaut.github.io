@@ -3,6 +3,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
+import flapImg from "../assets/images/flap.svg";
+
 type BaseProps = {
   image: string;
   alt?: string;
@@ -10,26 +12,26 @@ type BaseProps = {
   height?: string;
 };
 
-interface PhotoProps extends BaseProps {}
+interface ProfilePhotoProps extends BaseProps {}
 
-export const ProfilePhoto: React.FC<PhotoProps> = ({ image, alt }) => {
+export const ProfilePhoto: React.FC<ProfilePhotoProps> = ({ image, alt }) => {
   return (
     <div className="float-right m-2 overflow-hidden bg-blue-500 border-4 border-white bg-clip-content bg-radial-white rounded-tr-2xl rounded-bl-2xl">
       <img
         src={image}
-        className="lg:h-52 lg:w-52 md:w-48 md:h-48 sm:w-30 sm:h-30 w-28 h-28"
+        className="object-cover lg:h-52 lg:w-52 md:w-48 md:h-48 sm:w-30 sm:h-30 w-28 h-28"
         alt={alt}
       />
     </div>
   );
 };
 
-interface BookProps extends BaseProps {
+interface BookPreviewProps extends BaseProps {
   status: string;
   href: string;
 }
 
-export const BookPreview: React.FC<BookProps> = ({
+export const BookPreview: React.FC<BookPreviewProps> = ({
   image,
   alt,
   status,
@@ -85,31 +87,67 @@ export const BookPreview: React.FC<BookProps> = ({
   );
 };
 
-interface Project extends BaseProps {
+interface ProjectPreviewProps extends BaseProps {
   title: string;
 }
 
-export const ProjectFrame: React.FC<Project> = ({ image, alt, title }) => {
+export const ProjectPreviewFrame: React.FC<ProjectPreviewProps> = ({
+  image,
+  alt,
+  title,
+  children,
+}) => {
+  const bgStyle: React.CSSProperties = {
+    backgroundImage: `url(${image})`,
+  };
+
   return (
-    <div className="flex flex-col min-h-full overflow-hidden text-base text-white bg-blue-700 shadow-md place-content-between rounded-tr-3xl rounded-bl-3xl">
+    <div className="flex flex-col max-h-full overflow-hidden text-base text-white bg-blue-700 border-2 border-white shadow-md h-72 place-content-between rounded-tr-3xl rounded-bl-3xl">
       <div className="px-4 mx-auto my-2 text-lg md:my-4">{title}</div>
-      <img src={image} alt={alt} className="mx-auto mb-0"></img>
+      <div className="flex-grow bg-local bg-no-repeat bg-fill" style={bgStyle}>
+        {children}
+      </div>
     </div>
   );
 };
 
-export const ResumePreview: React.FC<PhotoProps> = ({
+interface ResumePhotoProps extends BaseProps {
+  flapSize?: number | string | undefined;
+}
+
+export const ResumePreview: React.FC<ResumePhotoProps> = ({
   image,
   alt,
   width,
   height,
+  flapSize = "100px",
 }) => {
+  const flapContainerStyle: React.CSSProperties = {
+    width,
+    height: flapSize,
+  };
+  const flapContainerStyle2: React.CSSProperties = {
+    width: flapSize,
+  };
+
   return (
-    <img
-      src={image}
-      alt={alt}
-      width={width}
-      height={height}
-      className="mx-auto mb-0"></img>
+    <div className="relative flex justify-center mx-auto">
+      <div
+        className="absolute z-10 flex justify-end"
+        style={flapContainerStyle}>
+        <div
+          className="relative h-full overflow-hidden bg-red-200"
+          style={flapContainerStyle2}>
+          <img className="shadow-lg" src={flapImg} width={flapSize} height={flapSize} />
+        </div>
+      </div>
+      <img
+        src={image}
+        alt={alt}
+        width={width}
+        height={height}
+        className="block mb-0"
+      />
+    </div>
   );
 };
