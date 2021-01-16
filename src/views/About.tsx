@@ -41,9 +41,9 @@ const About: React.FC<AboutProps> = ({ innerRef }) => {
         </Highlight>{" "}
         and many more challenges ahead.
       </Paragraph>
-      <Tag>Detail-oriented</Tag>
-      <Tag>Accountable</Tag>
-      <Tag>Collaborative</Tag>
+      <DescriptionTag>Detail-oriented</DescriptionTag>
+      <DescriptionTag>Accountable</DescriptionTag>
+      <DescriptionTag>Collaborative</DescriptionTag>
       <Subtitle>Hey, John, whatcha up to?</Subtitle>
       <Paragraph>
         My sister and I are working together to define the brand for her new
@@ -95,9 +95,9 @@ const About: React.FC<AboutProps> = ({ innerRef }) => {
   );
 };
 
-const Tag: React.FC = ({ children }) => {
+const DescriptionTag: React.FC = ({ children }) => {
   return (
-    <div className="inline-block px-3 py-2 mx-4 my-2 text-white bg-red-400 border-2 border-white select-none rounded-tr-xl rounded-bl-xl">
+    <div className="inline-block px-3 py-2 mx-1.5 my-0.5 text-white bg-red-400 border-2 border-white select-none md:mx-4 sm:mx-2 rounded-tr-xl rounded-bl-xl">
       {children}
     </div>
   );
