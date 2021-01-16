@@ -35,8 +35,8 @@ const App: React.FC = () => {
   return (
     <div className="bg-gray-900">
       <Welcome
-        innerRef={elRefs.current[sections.indexOf("Welcome")]}
-        scrollTarget={elRefs.current[sections.indexOf("About")]}
+        innerRef={elRef("Welcome")}
+        scrollTarget={elRef("About")}
       />
       <span ref={navDetachPoint} />
       <Navbar detachPoint={navDetachPoint}>
