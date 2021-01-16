@@ -16,44 +16,54 @@ import Welcome from "./views/Welcome";
 
 const App: React.FC = () => {
   const navDetachPoint = React.useRef<HTMLElement>(null);
-  const welcomeScrollTarget = React.useRef<HTMLElement>(null);
-  const aboutScrollTarget = React.useRef<HTMLElement>(null);
-  const projectsScrollTarget = React.useRef<HTMLElement>(null);
-  const resumeScrollTarget = React.useRef<HTMLElement>(null);
-  const contactScrollTarget = React.useRef<HTMLElement>(null);
-  const footerScrollTarget = React.useRef<HTMLElement>(null);
-  
+
+  const sections: string[] = [
+    "Welcome",
+    "About",
+    "Projects",
+    "Résumé",
+    "Contact",
+    "Footer",
+  ];
+  const elRefs = React.useRef<React.RefObject<HTMLElement>[]>([]);
+
+  elRefs.current = sections.map(
+    (_, index) => (elRefs.current[index] = React.createRef<HTMLElement>())
+  );
+
+  const elRef = React.useCallback(
+    (n: string) => elRefs.current[sections.indexOf(n)],
+    [elRefs.current]
+  );
+
   return (
     <div className="bg-gray-900">
       <Welcome
-        innerRef={welcomeScrollTarget}
-        scrollTarget={aboutScrollTarget}
+        innerRef={elRefs.current[sections.indexOf("Welcome")]}
+        scrollTarget={elRefs.current[sections.indexOf("About")]}
       />
       <span ref={navDetachPoint} />
       <Navbar detachPoint={navDetachPoint}>
         <NavButton
           name="Top"
           icon={faAngleDoubleUp}
-          scrollTarget={welcomeScrollTarget}
+          scrollRef={elRef("Welcome")}
         />
-        <NavButton name="About" scrollTarget={aboutScrollTarget} />
-        <NavButton name="Projects" scrollTarget={projectsScrollTarget} />
-        <NavButton name="Résumé" scrollTarget={resumeScrollTarget} />
-        <NavButton name="Contact" scrollTarget={contactScrollTarget} />
+        <NavButton name="About" scrollRef={elRef("About")} />
+        <NavButton name="Projects" scrollRef={elRef("Projects")} />
+        <NavButton name="Résumé" scrollRef={elRef("Résumé")} />
+        <NavButton name="Contact" scrollRef={elRef("Contact")} />
         <NavButton
           name="Footer"
           icon={faAngleDoubleDown}
-          scrollTarget={footerScrollTarget}
+          scrollRef={elRef("Footer")}
         />
       </Navbar>
-      <About innerRef={aboutScrollTarget} />
-      <Projects innerRef={projectsScrollTarget} />
-      <Resume innerRef={resumeScrollTarget} />
-      <Contact innerRef={contactScrollTarget} />
-      <Footer
-        scrollTarget={welcomeScrollTarget}
-        innerRef={footerScrollTarget}
-      />
+      <About innerRef={elRef("About")} />
+      <Projects innerRef={elRef("Projects")} />
+      <Resume innerRef={elRef("Résumé")} />
+      <Contact innerRef={elRef("Contact")} />
+      <Footer scrollTarget={elRef("Welcome")} innerRef={elRef("Footer")} />
     </div>
   );
 };
