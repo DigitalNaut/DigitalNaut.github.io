@@ -4,10 +4,10 @@ import React, { RefObject } from "react";
 import { SectionConstraint } from "./Section";
 
 interface NavProps {
-  scrollTarget: React.RefObject<HTMLElement>;
+  detachPoint: React.RefObject<HTMLElement>;
 }
 
-const Navbar: React.FC<NavProps> = ({ children, scrollTarget }) => {
+const Navbar: React.FC<NavProps> = ({ children, detachPoint: scrollTarget }) => {
   const [sticky, setSticky] = React.useState(true);
   const handleScroll = () => {
     if (scrollTarget.current) {

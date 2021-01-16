@@ -15,22 +15,22 @@ import Resume from "./views/Resume";
 import Welcome from "./views/Welcome";
 
 const App: React.FC = () => {
-  const navBreak = React.useRef<HTMLElement>(null);
+  const navDetachPoint = React.useRef<HTMLElement>(null);
   const welcomeScrollTarget = React.useRef<HTMLElement>(null);
   const aboutScrollTarget = React.useRef<HTMLElement>(null);
   const projectsScrollTarget = React.useRef<HTMLElement>(null);
   const resumeScrollTarget = React.useRef<HTMLElement>(null);
   const contactScrollTarget = React.useRef<HTMLElement>(null);
   const footerScrollTarget = React.useRef<HTMLElement>(null);
-
+  
   return (
     <div className="bg-gray-900">
       <Welcome
         innerRef={welcomeScrollTarget}
         scrollTarget={aboutScrollTarget}
       />
-      <span ref={navBreak} />
-      <Navbar scrollTarget={navBreak}>
+      <span ref={navDetachPoint} />
+      <Navbar detachPoint={navDetachPoint}>
         <NavButton
           name="Top"
           icon={faAngleDoubleUp}
