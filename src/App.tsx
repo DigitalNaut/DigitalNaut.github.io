@@ -45,7 +45,7 @@ const App: React.FC = () => {
       <span ref={navDetachPoint} />
       <Navbar detachPoint={navDetachPoint}>
         <NavButton
-          name="Top" // Alt when used with icon prop
+          name="Top of page" // Alt when used with icon prop
           icon={faAngleDoubleUp}
           scrollRef={elRef("Welcome")}
         />
@@ -54,7 +54,7 @@ const App: React.FC = () => {
         <NavButton name="Résumé" scrollRef={elRef("Résumé")} />
         <NavButton name="Contact" scrollRef={elRef("Contact")} />
         <NavButton
-          name="Footer"
+          name="Bottom of page"
           icon={faAngleDoubleDown}
           scrollRef={elRef("Footer")}
         />
