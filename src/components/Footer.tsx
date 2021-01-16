@@ -28,10 +28,10 @@ const Footer: React.FC<FooterProps> = ({ scrollTarget, innerRef }) => {
         You can find me on:
       </Paragraph>
       <div className="flex flex-row justify-center">
-        <a href="https://www.linkedin.com/in/johnbernalfsd/">
+        <a href="https://www.linkedin.com/in/johnbernalfsd/" target="_blank">
           <Logo src={LinkedInLogo} />
         </a>
-        <a href="https://github.com/DigitalNaut">
+        <a href="https://github.com/DigitalNaut" target="_blank">
           <Logo src={GitHubLogo} />
         </a>
       </div>
