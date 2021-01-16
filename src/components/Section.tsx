@@ -22,7 +22,7 @@ const Section: React.FC<Props> = ({ children, color, centered, fit }) => {
 
 export const SectionConstraint: React.FC<Props> = ({ children }) => {
   return (
-    <div className="w-screen px-6 mx-auto sm md:max-w-screen-md sm:max-w-screen-sm lg:px-20 md:px-14 sm:px-8">
+    <div className="w-full px-6 mx-auto md:max-w-screen-md sm:max-w-screen-sm lg:px-20 md:px-14 sm:px-8">
       {children}
     </div>
   );

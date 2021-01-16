@@ -24,9 +24,8 @@ const Projects: React.FC<ProjectsProps> = ({ innerRef }) => {
           rel="noreferrer">
           <ProjectPreviewFrame
             image={RSSFeederProjectPreview}
-            title="RSS Feeder">
-            ASDF
-          </ProjectPreviewFrame>
+            title="RSS Feeder"
+          />
         </a>
         <a
           href={process.env.REACT_APP_PROJECT_LOKER}
