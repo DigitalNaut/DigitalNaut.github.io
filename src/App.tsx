@@ -45,7 +45,7 @@ const App: React.FC = () => {
       <span ref={navDetachPoint} />
       <Navbar detachPoint={navDetachPoint}>
         <NavButton
-          name="Top"
+          name="Top" // Alt when used with icon prop
           icon={faAngleDoubleUp}
           scrollRef={elRef("Welcome")}
         />
