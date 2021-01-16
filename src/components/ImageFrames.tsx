@@ -138,7 +138,7 @@ export const ResumePreview: React.FC<ResumePhotoProps> = ({
         <div
           className="relative h-full overflow-hidden bg-red-200"
           style={flapContainerStyle2}>
-          <img className="shadow-lg" src={flapImg} width={flapSize} height={flapSize} />
+          <img alt="" className="shadow-lg" src={flapImg} width={flapSize} height={flapSize} />
         </div>
       </div>
       <img

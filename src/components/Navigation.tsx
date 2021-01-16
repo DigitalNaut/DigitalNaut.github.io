@@ -1,19 +1,22 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { RefObject } from "react";
+import React from "react";
 import { SectionConstraint } from "./Section";
 
 interface NavProps {
   detachPoint: React.RefObject<HTMLElement>;
 }
 
-const Navbar: React.FC<NavProps> = ({ children, detachPoint: scrollTarget }) => {
+const Navbar: React.FC<NavProps> = ({
+  children,
+  detachPoint: scrollTarget,
+}) => {
   const [sticky, setSticky] = React.useState(true);
-  const handleScroll = () => {
+  const handleScroll = React.useCallback(() => {
     if (scrollTarget.current) {
       setSticky(window.pageYOffset > scrollTarget.current.offsetTop);
     }
-  };
+  }, [scrollTarget]);
 
   React.useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -21,7 +24,7 @@ const Navbar: React.FC<NavProps> = ({ children, detachPoint: scrollTarget }) => 
     return () => {
       window.removeEventListener("scroll", () => handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <nav
@@ -41,19 +44,18 @@ interface ButtonProps {
   icon?: IconDefinition;
 }
 
-export const NavButton: React.FC<ButtonProps> = ({
-  name,
-  scrollRef,
-  icon,
-}) => {
-  const scroll = (target: RefObject<HTMLElement> | null) =>
-    target && target.current?.scrollIntoView({ behavior: "smooth" });
+export const NavButton: React.FC<ButtonProps> = ({ name, scrollRef, icon }) => {
+  const scroll = React.useCallback(
+    () =>
+      scrollRef.current?.scrollIntoView({ behavior: "smooth" }),
+    [scrollRef]
+  );
 
   return (
     <button
       title={name}
       className="px-2 pt-1 pb-2 text-sm text-white sm:pt-1.5 md:pt-2 lg:pt-3 sm:pb-2 md:pb-3 md:px-4 lg:px-6 sm:text-base md:text-lg rounded-br-xl rounded-bl-xl hover:shadow-inner hover:text-shadow-sm hover:text-red-700 hover:bg-red-200"
-      onClick={() => scrollRef && scroll(scrollRef)}>
+      onClick={() => scroll()}>
       {icon ? <FontAwesomeIcon icon={icon} /> : name}
     </button>
   );

@@ -17,14 +17,10 @@ import Welcome from "./views/Welcome";
 const App: React.FC = () => {
   const navDetachPoint = React.useRef<HTMLElement>(null);
 
-  const sections: string[] = [
-    "Welcome",
-    "About",
-    "Projects",
-    "Résumé",
-    "Contact",
-    "Footer",
-  ];
+  const sections: string[] = React.useMemo(
+    () => ["Welcome", "About", "Projects", "Résumé", "Contact", "Footer"],
+    []
+  );
   const elRefs = React.useRef<React.RefObject<HTMLElement>[]>([]);
 
   elRefs.current = sections.map(
@@ -33,7 +29,7 @@ const App: React.FC = () => {
 
   const elRef = React.useCallback(
     (n: string) => elRefs.current[sections.indexOf(n)],
-    [elRefs.current]
+    [elRefs, sections]
   );
 
   return (
