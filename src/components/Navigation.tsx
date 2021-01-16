@@ -37,13 +37,13 @@ const Navbar: React.FC<NavProps> = ({ children, detachPoint: scrollTarget }) => 
 
 interface ButtonProps {
   name: string;
-  scrollTarget: React.RefObject<HTMLElement>;
+  scrollRef: React.RefObject<HTMLElement>;
   icon?: IconDefinition;
 }
 
 export const NavButton: React.FC<ButtonProps> = ({
   name,
-  scrollTarget,
+  scrollRef,
   icon,
 }) => {
   const scroll = (target: RefObject<HTMLElement> | null) =>
@@ -53,7 +53,7 @@ export const NavButton: React.FC<ButtonProps> = ({
     <button
       title={name}
       className="px-2 pt-1 pb-2 text-sm text-white sm:pt-1.5 md:pt-2 lg:pt-3 sm:pb-2 md:pb-3 md:px-4 lg:px-6 sm:text-base md:text-lg rounded-br-xl rounded-bl-xl hover:shadow-inner hover:text-shadow-sm hover:text-red-700 hover:bg-red-200"
-      onClick={() => scrollTarget && scroll(scrollTarget)}>
+      onClick={() => scrollRef && scroll(scrollRef)}>
       {icon ? <FontAwesomeIcon icon={icon} /> : name}
     </button>
   );
