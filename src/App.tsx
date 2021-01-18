@@ -22,7 +22,7 @@ const App: React.FC = () => {
     []
   );
   const elRefs = React.useRef<React.RefObject<HTMLElement>[]>([]);
-
+  
   elRefs.current = sections.map(
     (_, index) => (elRefs.current[index] = React.createRef<HTMLElement>())
   );
@@ -34,23 +34,20 @@ const App: React.FC = () => {
 
   return (
     <div className="bg-gray-900">
-      <Welcome
-        innerRef={elRef("Welcome")}
-        scrollTarget={elRef("About")}
-      />
+      <Welcome innerRef={elRef("Welcome")} scrollTarget={elRef("About")} />
       <span ref={navDetachPoint} />
-      <Navbar detachPoint={navDetachPoint}>
+      <Navbar elRefs={elRefs} detachPoint={navDetachPoint}>
         <NavButton
-          name="Top of page" // Alt when used with icon prop
+          displayName="Top of page" // Alt when used with icon prop
           icon={faAngleDoubleUp}
           scrollRef={elRef("Welcome")}
         />
-        <NavButton name="About" scrollRef={elRef("About")} />
-        <NavButton name="Projects" scrollRef={elRef("Projects")} />
-        <NavButton name="Résumé" scrollRef={elRef("Résumé")} />
-        <NavButton name="Contact" scrollRef={elRef("Contact")} />
+        <NavButton displayName="About" scrollRef={elRef("About")} />
+        <NavButton displayName="Projects" scrollRef={elRef("Projects")} />
+        <NavButton displayName="Résumé" scrollRef={elRef("Résumé")} />
+        <NavButton displayName="Contact" scrollRef={elRef("Contact")} />
         <NavButton
-          name="Bottom of page"
+          displayName="Bottom of page"
           icon={faAngleDoubleDown}
           scrollRef={elRef("Footer")}
         />
@@ -59,7 +56,7 @@ const App: React.FC = () => {
       <Projects innerRef={elRef("Projects")} />
       <Resume innerRef={elRef("Résumé")} />
       <Contact innerRef={elRef("Contact")} />
-      <Footer scrollTarget={elRef("Welcome")} innerRef={elRef("Footer")} />
+      <Footer scrollRef={elRef("Welcome")} innerRef={elRef("Footer")} />
     </div>
   );
 };

@@ -5,26 +5,59 @@ import { SectionConstraint } from "./Section";
 
 interface NavProps {
   detachPoint: React.RefObject<HTMLElement>;
+  elRefs: React.MutableRefObject<React.RefObject<HTMLElement>[]>;
 }
 
-const Navbar: React.FC<NavProps> = ({
-  children,
-  detachPoint: scrollTarget,
-}) => {
+const Navbar: React.FC<NavProps> = ({ children, detachPoint, elRefs }) => {
   const [sticky, setSticky] = React.useState(true);
-  const handleScroll = React.useCallback(() => {
-    if (scrollTarget.current) {
-      setSticky(window.pageYOffset > scrollTarget.current.offsetTop);
+  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
+
+  const childrenWithProps = React.Children.map(
+    children,
+    (child: React.ReactNode, index: number) =>
+      React.cloneElement(child as React.ReactElement<ButtonProps>, {
+        isActive: index === activeIndex,
+      })
+  );
+
+  const handleScrolling = React.useCallback(() => {
+    if (detachPoint.current) {
+      setSticky(window.pageYOffset > detachPoint.current.offsetTop);
     }
-  }, [scrollTarget]);
+
+    if (elRefs.current.length) {
+      let prevIndex = 0;
+      for (const ref of elRefs.current) {
+        if (ref.current)
+          if (
+            window.innerHeight + window.scrollY >=
+            document.body.offsetHeight
+          ) {
+            setActiveIndex(elRefs.current.length - 1);
+            break;
+          } else if (
+            ref.current.offsetTop <
+            window.pageYOffset + window.innerHeight * 0.5
+          ) {
+            prevIndex = elRefs.current.indexOf(ref);
+            continue;
+          } else {
+            setActiveIndex(prevIndex);
+            break;
+          }
+      }
+    }
+  }, [detachPoint, elRefs]);
 
   React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrolling);
+    window.addEventListener("resize", handleScrolling);
 
     return () => {
-      window.removeEventListener("scroll", () => handleScroll);
+      window.removeEventListener("scroll", () => handleScrolling);
+      window.removeEventListener("resize", () => handleScrolling);
     };
-  }, [handleScroll]);
+  }, [handleScrolling]);
 
   return (
     <nav
@@ -32,29 +65,37 @@ const Navbar: React.FC<NavProps> = ({
         sticky ? "top-0 w-full z-50 shadow-xl sticky" : "shadow-none"
       }`}>
       <SectionConstraint>
-        <div className="flex place-items-center justify-evenly">{children}</div>
+        <div className="flex place-items-center justify-evenly">
+          {childrenWithProps}
+        </div>
       </SectionConstraint>
     </nav>
   );
 };
 
 interface ButtonProps {
-  name: string;
+  displayName: string;
   scrollRef: React.RefObject<HTMLElement>;
   icon?: IconDefinition;
+  isActive?: boolean;
 }
 
-export const NavButton: React.FC<ButtonProps> = ({ name, scrollRef, icon }) => {
-  const scroll = React.useCallback(
-    () =>
-      scrollRef.current?.scrollIntoView({ behavior: "smooth" }),
-    [scrollRef]
-  );
+export const NavButton: React.FC<ButtonProps> = ({
+  displayName: name,
+  scrollRef,
+  icon,
+  isActive,
+}) => {
+  const scroll = React.useCallback(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [scrollRef]);
 
   return (
     <button
       title={name}
-      className="px-2 pt-1 pb-2 text-sm text-white sm:pt-1.5 md:pt-2 lg:pt-3 sm:pb-2 md:pb-3 md:px-4 lg:px-6 sm:text-base md:text-lg rounded-br-xl rounded-bl-xl hover:shadow-inner hover:text-shadow-sm hover:text-red-700 hover:bg-red-200"
+      className={`px-2 pt-1 pb-2 text-sm ${
+        isActive ? "text-red-700 bg-red-200" : "text-white"
+      } sm:pt-1.5 md:pt-2 lg:pt-3 sm:pb-2 md:pb-3 md:px-4 lg:px-6 sm:text-base md:text-lg rounded-br-xl rounded-bl-xl hover:shadow-inner hover:text-shadow-sm hover:text-red-700 hover:bg-red-100`}
       onClick={() => scroll()}>
       {icon ? <FontAwesomeIcon icon={icon} /> : name}
     </button>

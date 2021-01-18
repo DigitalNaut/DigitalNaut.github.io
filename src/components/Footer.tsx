@@ -6,11 +6,11 @@ import GitHubLogo from "../assets/images/GitHubLogo.svg";
 import { Paragraph } from "./Formatting";
 
 interface FooterProps {
-  scrollTarget: React.RefObject<HTMLElement>;
+  scrollRef: React.RefObject<HTMLElement>;
   innerRef: React.RefObject<HTMLElement>;
 }
 
-const Footer: React.FC<FooterProps> = ({ scrollTarget, innerRef }) => {
+const Footer: React.FC<FooterProps> = ({ scrollRef: scrollTarget, innerRef }) => {
   const scroll = (target: RefObject<HTMLElement> | null) =>
     target && target.current?.scrollIntoView({ behavior: "smooth" });
 
