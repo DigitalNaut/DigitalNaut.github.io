@@ -88,25 +88,36 @@ export const BookPreview: React.FC<BookPreviewProps> = ({
 };
 
 interface ProjectPreviewProps extends BaseProps {
-  title: string;
+  title?: string;
 }
 
 export const ProjectPreviewFrame: React.FC<ProjectPreviewProps> = ({
   image,
   alt,
   title,
-  children,
 }) => {
   const bgStyle: React.CSSProperties = {
     backgroundImage: `url(${image})`,
   };
 
   return (
-    <div className="flex flex-col max-h-full overflow-hidden text-base text-white bg-blue-700 border-2 border-white shadow-md h-72 place-content-between rounded-tr-3xl rounded-bl-3xl">
-      <div className="px-4 mx-auto my-2 text-lg md:my-4">{title}</div>
-      <div className="flex-grow bg-local bg-no-repeat bg-fill" style={bgStyle}>
-        {children}
-      </div>
+    <div
+      className={`${
+        title
+          ? "hover:bg-blue-700 hover:shadow-lg flex-col group h-72 text-base text-white place-content-between shadow-md"
+          : "h-48 w-48 float-right ml-4 mb-4"
+      } flex overflow-hidden bg-blue-800 
+      rounded-tr-3xl rounded-bl-3xl`}>
+      {title && (
+        <div className="px-4 mx-auto my-2 text-lg md:my-4 group-hover:text-shadow-lg">
+          {title}
+        </div>
+      )}
+      <div
+        className="flex-grow bg-local bg-no-repeat bg-cover"
+        title={alt}
+        style={bgStyle}
+      />
     </div>
   );
 };
@@ -138,7 +149,13 @@ export const ResumePreview: React.FC<ResumePhotoProps> = ({
         <div
           className="relative h-full overflow-hidden bg-red-200"
           style={flapContainerStyle2}>
-          <img alt="" className="shadow-lg" src={flapImg} width={flapSize} height={flapSize} />
+          <img
+            alt=""
+            className="shadow-lg"
+            src={flapImg}
+            width={flapSize}
+            height={flapSize}
+          />
         </div>
       </div>
       <img
