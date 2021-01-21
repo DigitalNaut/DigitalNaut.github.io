@@ -10,14 +10,19 @@ export const Title: React.FC = ({ children }) => {
 
 interface Props {
   small?: boolean;
+  offCentered?: boolean;
 }
 
-export const Subtitle: React.FC<Props> = ({ children, small }) => {
+export const Subtitle: React.FC<Props> = ({ children, small, offCentered }) => {
   return (
     <h2
-      className={`${!small && "sm:-ml-12 md:-ml-28 lg:-ml-36"} font-title ${
-        small ? "text-2xl" : "text-3xl"
-      } text-shadow-sm text-red-700 ${small ? "pt-3 pb-2" : "pt-5 pb-4"}`}>
+      className={`font-title ${
+        small
+          ? "text-2xl pt-3 pb-2"
+          : `pt-5 pb-4 text-3xl ${
+              offCentered && "sm:-ml-12 md:-ml-28 lg:-ml-36"
+            }`
+      } text-shadow-sm text-red-700`}>
       {children}
     </h2>
   );
@@ -42,4 +47,3 @@ export const Paragraph: React.FC<ParagraphProps> = ({
     </p>
   );
 };
-
