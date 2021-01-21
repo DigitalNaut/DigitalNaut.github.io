@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.b4af853c.chunk.css",
-    "main.js": "/static/js/main.f9125cfd.chunk.js",
-    "main.js.map": "/static/js/main.f9125cfd.chunk.js.map",
+    "main.css": "/static/css/main.f0e9cb4e.chunk.css",
+    "main.js": "/static/js/main.3f623311.chunk.js",
+    "main.js.map": "/static/js/main.3f623311.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.4ee2a129.js",
     "runtime-main.js.map": "/static/js/runtime-main.4ee2a129.js.map",
-    "static/js/2.32162779.chunk.js": "/static/js/2.32162779.chunk.js",
-    "static/js/2.32162779.chunk.js.map": "/static/js/2.32162779.chunk.js.map",
+    "static/js/2.9f41884d.chunk.js": "/static/js/2.9f41884d.chunk.js",
+    "static/js/2.9f41884d.chunk.js.map": "/static/js/2.9f41884d.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.b4af853c.chunk.css.map": "/static/css/main.b4af853c.chunk.css.map",
-    "static/js/2.32162779.chunk.js.LICENSE.txt": "/static/js/2.32162779.chunk.js.LICENSE.txt",
+    "static/css/main.f0e9cb4e.chunk.css.map": "/static/css/main.f0e9cb4e.chunk.css.map",
+    "static/js/2.9f41884d.chunk.js.LICENSE.txt": "/static/js/2.9f41884d.chunk.js.LICENSE.txt",
     "static/media/Bigote.1856e415.png": "/static/media/Bigote.1856e415.png",
     "static/media/CalcAppProjectPreview.9043166d.png": "/static/media/CalcAppProjectPreview.9043166d.png",
     "static/media/EN_CV_FSD_1_5_2020.bb8e06b8.jpg": "/static/media/EN_CV_FSD_1_5_2020.bb8e06b8.jpg",
@@ -25,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.4ee2a129.js",
-    "static/js/2.32162779.chunk.js",
-    "static/css/main.b4af853c.chunk.css",
-    "static/js/main.f9125cfd.chunk.js"
+    "static/js/2.9f41884d.chunk.js",
+    "static/css/main.f0e9cb4e.chunk.css",
+    "static/js/main.3f623311.chunk.js"
   ]
 }
