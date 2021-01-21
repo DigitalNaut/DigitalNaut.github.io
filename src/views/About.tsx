@@ -20,7 +20,7 @@ const About: React.FC<AboutProps> = ({ innerRef }) => {
       <Title>
         <span>About</span>
       </Title>
-      <Subtitle>It’s-a me, John B.!</Subtitle>
+      <Subtitle offCentered>It’s-a me, John B.!</Subtitle>
       <ProfilePhoto image={bigote} />
       <Paragraph>
         I’ve been{" "}
@@ -44,7 +44,7 @@ const About: React.FC<AboutProps> = ({ innerRef }) => {
       <DescriptionTag>Detail-oriented</DescriptionTag>
       <DescriptionTag>Accountable</DescriptionTag>
       <DescriptionTag>Collaborative</DescriptionTag>
-      <Subtitle>Hey, John, whatcha up to?</Subtitle>
+      <Subtitle offCentered>Hey, John, whatcha up to?</Subtitle>
       <Paragraph>
         My sister and I are working together to define the brand for her new
         business and
