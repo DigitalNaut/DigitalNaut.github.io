@@ -21,16 +21,18 @@ const Navbar: React.FC<NavProps> = ({ children, detachPoint, elRefs }) => {
   );
 
   const handleScrolling = React.useCallback(() => {
+    // Make navbar detachable at breakpoint
     if (detachPoint.current) {
       setSticky(window.pageYOffset > detachPoint.current.offsetTop);
     }
 
+    // Highlight navbar buttons based on scroll height
     if (elRefs.current.length) {
       let prevIndex = 0;
       for (const ref of elRefs.current) {
         if (ref.current)
           if (
-            window.innerHeight + window.scrollY >=
+            window.innerHeight + window.pageYOffset >=
             document.body.offsetHeight
           ) {
             setActiveIndex(elRefs.current.length - 1);
@@ -93,7 +95,7 @@ export const NavButton: React.FC<ButtonProps> = ({
   return (
     <button
       title={name}
-      className={`px-2 pt-1 pb-2 text-sm ${
+      className={`px-2 pt-1 pb-2 text-sm focus:outline-none ${
         isActive ? "text-red-700 bg-red-200" : "text-white"
       } sm:pt-1.5 md:pt-2 lg:pt-3 sm:pb-2 md:pb-3 md:px-4 lg:px-6 sm:text-base md:text-lg rounded-br-xl rounded-bl-xl hover:shadow-inner hover:text-shadow-sm hover:text-red-700 hover:bg-red-100`}
       onClick={() => scroll()}>
