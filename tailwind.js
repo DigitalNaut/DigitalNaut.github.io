@@ -877,6 +877,7 @@ module.exports = {
     textTransform: ["responsive"],
     transform: ["responsive"],
     transformOrigin: ["responsive"],
+    textShadow: ['responsive', 'hover', 'focus', 'group-hover'],
     transitionDelay: ["responsive"],
     transitionDuration: ["responsive"],
     transitionProperty: ["responsive"],
