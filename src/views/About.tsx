@@ -1,7 +1,13 @@
 import React from "react";
 
 import Section from "../components/Section";
-import { Title, Paragraph, Subtitle } from "../components/Formatting";
+import {
+  Title,
+  Paragraph,
+  Subtitle,
+  FancyLink,
+  Highlight,
+} from "../components/Formatting";
 import { ProfilePhoto, BookPreview } from "../components/ImageFrames";
 
 import bigote from "../assets/images/Bigote.png";
@@ -35,11 +41,8 @@ const About: React.FC<AboutProps> = ({ innerRef }) => {
         With formal training and passion for both the
         <Highlight> exact sciences</Highlight> & the
         <Highlight> graphic arts</Highlight>, I believe I can take on the world
-        of{" "}
-        <Highlight>
-          software engineering, web animation, Machine Learning
-        </Highlight>{" "}
-        and many more challenges ahead.
+        of software engineering, web animation, Machine Learning and many more
+        challenges ahead.
       </Paragraph>
       <DescriptionTag>Detail-oriented</DescriptionTag>
       <DescriptionTag>Accountable</DescriptionTag>
@@ -47,28 +50,20 @@ const About: React.FC<AboutProps> = ({ innerRef }) => {
       <Subtitle offCentered>Hey, John, whatcha up to?</Subtitle>
       <Paragraph>
         My sister and I are working together to define the brand for her new
-        business and
-        <Highlight> launch her online store</Highlight> soon, which I'm so
-        psyched about!
+        business and launch her online store soon, which I'm so psyched about!
       </Paragraph>
       <Paragraph>
         I’m currently enrolled in{" "}
         <Highlight>
-          <a
-            href="https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/"
-            rel="noreferrer"
-            className="underline hover:text-red-700">
+          <FancyLink href="https://courses.edx.org/courses/course-v1:HarvardX+CS50+X/course/">
             CS50 by Harvard
-          </a>
+          </FancyLink>
         </Highlight>
         , as well as{" "}
         <Highlight>
-          <a
-            href="https://www.coursera.org/learn/machine-learning/"
-            rel="noreferrer"
-            className="underline hover:text-red-700">
+          <FancyLink href="https://www.coursera.org/learn/machine-learning/">
             Machine Learning from Stanford
-          </a>
+          </FancyLink>
         </Highlight>
         . For me, self-learning never stops.
       </Paragraph>
@@ -101,10 +96,6 @@ const DescriptionTag: React.FC = ({ children }) => {
       {children}
     </div>
   );
-};
-
-const Highlight: React.FC = ({ children }) => {
-  return <span className="text-blue-900">{children}</span>;
 };
 
 export default About;

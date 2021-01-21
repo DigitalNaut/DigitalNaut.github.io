@@ -47,3 +47,23 @@ export const Paragraph: React.FC<ParagraphProps> = ({
     </p>
   );
 };
+
+interface FancyLinkProps {
+  href: string;
+}
+
+export const FancyLink: React.FC<FancyLinkProps> = ({ href, children }) => {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="text-blue-900 underline hover:text-red-700">
+      {children}
+    </a>
+  );
+};
+
+export const Highlight: React.FC = ({ children }) => {
+  return <span className="font-semibold">{children}</span>;
+};

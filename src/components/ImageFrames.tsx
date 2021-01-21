@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 import flapImg from "../assets/images/flap.svg";
+import { FancyLink } from "./Formatting";
 
 type BaseProps = {
   image: string;
@@ -71,7 +72,7 @@ export const BookPreview: React.FC<BookPreviewProps> = ({
   };
 
   return (
-    <a href={href} target="_blank" rel="noreferrer">
+    <FancyLink href={href}>
       <div className="relative z-0 inline-block mx-2 mb-4 rounded-tr-2xl rounded-bl-2xl">
         {!!status && (
           <div
@@ -83,18 +84,20 @@ export const BookPreview: React.FC<BookPreviewProps> = ({
         )}
         <img src={image} width="100em" alt={alt} title={alt} />
       </div>
-    </a>
+    </FancyLink>
   );
 };
 
 interface ProjectPreviewProps extends BaseProps {
   title?: string;
+  selected?: boolean;
 }
 
 export const ProjectPreviewFrame: React.FC<ProjectPreviewProps> = ({
   image,
   alt,
   title,
+  selected = false,
 }) => {
   const bgStyle: React.CSSProperties = {
     backgroundImage: `url(${image})`,
@@ -102,20 +105,21 @@ export const ProjectPreviewFrame: React.FC<ProjectPreviewProps> = ({
 
   return (
     <div
-      className={`${
+      className={`${selected && "border-4 border-white shadow-xl"}
+      ${
         title
-          ? "hover:bg-blue-700 hover:shadow-lg flex-col group h-72 text-base text-white place-content-between shadow-md"
-          : "h-48 w-48 float-right ml-4 mb-4"
+          ? "cursor-pointer hover:bg-blue-700 hover:shadow-lg flex-col group h-32 w-40 sm:w-36 sm:h-36 md:h-38 md:w-38 lg:h-48 lg:w-56 m-2 text-base text-white place-content-between shadow-md"
+          : "h-48 w-48 ml-4 mb-4 shadow-lg"
       } flex overflow-hidden bg-blue-800 
       rounded-tr-3xl rounded-bl-3xl`}>
       {title && (
-        <div className="px-4 mx-auto my-2 text-lg md:my-4 group-hover:text-shadow-lg">
+        <div className="px-4 mx-auto my-2 text-lg sm:text-sm md:my-4 group-hover:text-shadow-lg">
           {title}
         </div>
       )}
       <div
         className="flex-grow bg-local bg-no-repeat bg-cover"
-        title={alt}
+        title={title}
         style={bgStyle}
       />
     </div>
