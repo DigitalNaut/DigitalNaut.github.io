@@ -65,7 +65,10 @@ const About: React.FC<AboutProps> = ({ innerRef }) => {
             Machine Learning from Stanford
           </FancyLink>
         </Highlight>
-        . For me, self-learning never stops.
+        . I'm also trying my hand at{" "}
+        <FancyLink href="https://www.hackademy.mx/clubdeprogramacion">Hackademy</FancyLink>'s
+        Programming Club and its weekly challenges. For me, self-learning never
+        stops.
       </Paragraph>
       <Subtitle small={true}>Reading list:</Subtitle>
       <BookPreview
