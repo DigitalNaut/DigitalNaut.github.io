@@ -5,12 +5,12 @@ import Showcase from "../../components/Showcase";
 import LokrProjectPreview from "../../assets/images/LokrProjectPreview.png";
 import { FancyLink, Paragraph, Subtitle } from "../../components/Formatting";
 
-const LokerShowcase: React.FC = ({ children }) => {
+const LokrShowcase: React.FC = ({ children }) => {
   return (
-    <Showcase title="Loker">
+    <Showcase title="Lokr">
       <div className="flex flex-col float-right mb-4">
         <ProjectPreviewFrame image={LokrProjectPreview} />
-        <FancyLink href={process.env.REACT_APP_PROJECT_LOKER || ""}>
+        <FancyLink href={process.env.REACT_APP_PROJECT_Lokr || ""}>
           View the presentation
         </FancyLink>
       </div>
@@ -71,4 +71,4 @@ const LokerShowcase: React.FC = ({ children }) => {
   );
 };
 
-export default LokerShowcase;
+export default LokrShowcase;

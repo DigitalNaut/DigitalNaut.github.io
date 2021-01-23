@@ -9,7 +9,7 @@ import CalcAppProjectPreview from "../assets/images/CalcAppProjectPreview.png";
 import RSSFeederProjectPreview from "../assets/images/RSSFeederProjectPreview.png";
 
 import RSSFeederShowcase from "./ProjectSummary/RSSFeederProject";
-import LokerShowcase from "./ProjectSummary/LokerProject";
+import LokrShowcase from "./ProjectSummary/LokrProject";
 import CalcAppShowcase from "./ProjectSummary/CalcAppProject";
 import TRHShowcase from "./ProjectSummary/TRHProject";
 
@@ -26,7 +26,7 @@ const Projects: React.FC<ProjectsProps> = ({ innerRef }) => {
       <Title>Projects</Title>
       <div className="mt-6">
         {selected === 0 && <RSSFeederShowcase />}
-        {selected === 1 && <LokerShowcase />}
+        {selected === 1 && <LokrShowcase />}
         {selected === 2 && <TRHShowcase />}
         {selected === 3 && <CalcAppShowcase />}
       </div>
@@ -43,7 +43,7 @@ const Projects: React.FC<ProjectsProps> = ({ innerRef }) => {
           <div onClick={() => setSelected(1)}>
             <ProjectPreviewFrame
               image={LokrProjectPreview}
-              title="Loker"
+              title="Lokr"
               selected={selected === 1}
             />
           </div>
